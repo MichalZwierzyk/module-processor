@@ -1,0 +1,29 @@
+allprojects {
+    group 'com.justeat'
+    version '1.0-SNAPSHOT'
+
+    apply plugin: 'application'
+    apply plugin: 'java'
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        testCompile 'junit:junit:4.11'
+    }
+
+    task copyLicense {
+        outputs.file new File("$buildDir/LICENSE")
+        doLast {
+            copy {
+                from "LICENSE"
+                into "$buildDir"
+            }
+        }
+    }
+
+    applicationDistribution.from(copyLicense) {
+        into ""
+    }
+}
