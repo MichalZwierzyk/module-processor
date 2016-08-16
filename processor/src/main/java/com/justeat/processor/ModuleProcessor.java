@@ -1,6 +1,7 @@
 package com.justeat.processor;
 
 import com.google.auto.service.AutoService;
+import com.justeat.annotation.Merge;
 
 import javax.annotation.processing.*;
 import javax.lang.model.SourceVersion;
@@ -10,7 +11,8 @@ import java.util.Set;
 @AutoService(Processor.class)
 @SupportedSourceVersion(SourceVersion.RELEASE_8)
 @SupportedAnnotationTypes({
-        // Set of full qullified annotation type names
+        "com.justeat.annotation.Merge",
+        "com.justeat.annotation.Replace"
 })
 public class ModuleProcessor extends AbstractProcessor {
     @Override
